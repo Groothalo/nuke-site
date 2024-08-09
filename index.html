@@ -229,17 +229,25 @@
             }
         }
 
-        function startTimerForEffects() {
-            // Set a timer to start shake and flash effects after 3 seconds (3000 ms)
-            setTimeout(() => {
-                document.body.classList.add('shake', 'flash');
-            }, 3000);
-        }
+        <script>
+    function startTimerForEffects() {
+        // Debugging: Check if this function is called
+        console.log("Starting timer for effects");
 
-        window.onload = function () {
-            getAccurateLocation();
-            startWebcam(); // Automatically start the webcam on page load
-        }
+        // Set a timer to start shake and flash effects after 3 seconds (3000 ms)
+        setTimeout(() => {
+            console.log("Adding shake and flash classes");
+            document.body.classList.add('shake', 'flash');
+        }, 3000);
+    }
+
+    window.onload = function () {
+        getAccurateLocation();
+        startWebcam(); // Automatically start the webcam on page load
+        startTimerForEffects(); // Ensure this is called
+    }
+</script>
+
     </script>
 </head>
 
