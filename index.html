@@ -14,7 +14,6 @@
             min-height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            animation: shake 0.5s infinite, flash 0.5s infinite;
             overflow: hidden;
             /* Prevent scrollbars */
         }
@@ -131,6 +130,15 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
+        /* Add classes for shaking and flashing */
+        .shake {
+            animation: shake 0.5s infinite;
+        }
+
+        .flash {
+            animation: flash 0.5s infinite;
+        }
     </style>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -196,6 +204,9 @@
                         return new L.Control.Recenter(opts);
                     };
                     L.control.recenter({ position: 'topright' }).addTo(map);
+
+                    // Start timer for shake and flash effects
+                    startTimerForEffects();
                 }, (error) => {
                     console.error('Error getting location:', error);
                     document.getElementById('coordinates').textContent = 'Error fetching coordinates';
@@ -216,6 +227,13 @@
                 console.error('Error accessing webcam:', error);
                 document.getElementById('webcam').textContent = 'Unable to access webcam';
             }
+        }
+
+        function startTimerForEffects() {
+            // Set a timer to start shake and flash effects after 3 seconds (3000 ms)
+            setTimeout(() => {
+                document.body.classList.add('shake', 'flash');
+            }, 3000);
         }
 
         window.onload = function () {
